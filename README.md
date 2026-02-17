@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Workflow Builder
+
+A single-page workflow builder for defining question sequences that LLM agents use when making phone calls to insurers. Built with Next.js, React Flow, and shadcn/ui.
+
+## Features
+
+- Visual canvas with pan, zoom, and drag support
+- Pre-seeded insurance-themed question nodes
+- Add new question nodes with a single click
+- Nodes automatically connect with directed edges
+- Dotted grid background for spatial orientation
+
+## Tech Stack
+
+- **Next.js 16** (React 19, Tailwind v4)
+- **React Flow** (`@xyflow/react`) — canvas engine for nodes, edges, pan/zoom
+- **shadcn/ui** — Button and Card components built on Radix + Tailwind
+- **TypeScript**
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- Yarn
+
+### Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run the development server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-## Learn More
+### Build for production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+yarn build
+yarn start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+  layout.tsx              # Root layout with metadata
+  page.tsx                # Renders the WorkflowBuilder
+  globals.css             # Tailwind + React Flow + shadcn styles
 
-## Deploy on Vercel
+components/
+  ui/                     # shadcn/ui primitives (Button, Card)
+  workflow/
+    WorkflowBuilder.tsx   # Client component — React Flow setup and state
+    WorkflowHeader.tsx    # Header bar with title and "Add Node" button
+    QuestionNode.tsx      # Custom React Flow node rendering a question card
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+lib/
+  utils.ts                # cn() utility (Tailwind class merging)
+  workflow-data.ts        # Types, predefined questions, node/edge factories
+```
