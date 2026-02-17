@@ -40,9 +40,16 @@ Open [http://localhost:3000](http://localhost:3000) to view the app.
 
 ### Build for production
 
+This project is configured as a static export (`output: "export"` in `next.config.ts`). Running `yarn build` generates a fully static site in the `out/` directory.
+
 ```bash
 yarn build
-yarn start
+```
+
+To preview the production build locally, serve the `out/` directory with any static file server:
+
+```bash
+npx serve out
 ```
 
 ## Project Structure
