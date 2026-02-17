@@ -24,8 +24,8 @@ const nodeTypes = { question: QuestionNode };
 
 const defaultEdgeOptions: DefaultEdgeOptions = {
   type: "smoothstep",
-  markerEnd: { type: MarkerType.ArrowClosed, color: "#9333ea" },
-  style: { stroke: "#9333ea", strokeWidth: 2 },
+  markerEnd: { type: MarkerType.ArrowClosed, color: "var(--color-primary)" },
+  style: { stroke: "var(--color-primary)", strokeWidth: 2 },
 };
 
 export function WorkflowBuilder() {
